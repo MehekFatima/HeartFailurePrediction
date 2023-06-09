@@ -1,0 +1,163 @@
+<!-- This is GUI for Heart disease Detection Application Using Machine Learning Classifer -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: lightpink;
+        }
+
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            margin-top: -100px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            text-align: center;
+        }
+        P{
+            font-size: 28px;
+            font-family: cursive;
+            color: crimson;
+            text-align: center;
+            margin-bottom: 120px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        select,
+        input[type="number"] {
+            width: 220px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .prediction {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+        p2{
+            font-size: 20px ;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <p> ***Welcome To Our Page!***</p>
+
+    <div class="container">
+        
+        <h1>Heart Disease Prediction</h1>
+        <form action="/predict" method="POST">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br><br>
+
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br><br>
+
+             <label for="chest_pain_type">Chest Pain Type:</label>
+            <select id="chest_pain_type" name="chest_pain_type" required>
+                <option value="Typical Angina">Typical Angina</option>
+                <option value="Atypical Angina">Atypical Angina</option>
+                <option value="Non-anginal Pain">Non-anginal Pain</option>
+                <option value="Asymptomatic">Asymptomatic</option>
+            </select><br><br>
+            
+             <label for="resting_bp">Resting Blood Pressure:</label>
+            <input type="number" id="resting_bp" name="resting_bp" required><br><br>
+            
+            <label for="cholesterol">Cholesterol:</label>
+            <input type="number" id="cholesterol" name="cholesterol" required><br><br>
+            
+            <label for="fasting_bs">Fasting Blood Sugar:</label>
+            <select id="fasting_bs" name="fasting_bs" required>
+                <option value="Lower than 120 mg/dl">Lower than 120 mg/dl</option>
+                <option value="Greater than 120 mg/dl">Greater than 120 mg/dl</option>
+            </select><br><br>
+
+            <label for="resting_ecg">Resting ECG:</label>
+            <select id="resting_ecg" name="resting_ecg" required>
+                <option value="Normal">Normal</option>
+                <option value="ST-T Wave Abnormality">ST-T Wave Abnormality</option>
+                <option value="Left Ventricular Hypertrophy">Left Ventricular Hypertrophy</option>
+            </select><br><br>
+
+            <label for="max_hr">Maximum Heart Rate:</label>
+            <input type="number" id="max_hr" name="max_hr" required><br><br>
+
+            <label for="exercise_angina">Exercise-Induced Angina:</label>
+            <select id="exercise_angina" name="exercise_angina" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select><br><br>
+
+            <label for="oldpeak">ST Depression:</label>
+            <input type="number" id="oldpeak" name="oldpeak" step="0.1" required><br><br>
+
+            <label for="st_slope">ST Slope:</label>
+            <select id="st_slope" name="st_slope" required>
+                <option value="Upsloping">Upsloping</option>
+                <option value="Flat">Flat</option>
+                <option value="Downsloping">Downsloping</option>
+            </select><br><br>
+
+
+            <input type="submit" value="Predict">
+        </form>
+       
+        <div class="prediction">
+            {% if prediction_text %}
+            {{ prediction_text }}
+            {% endif %}
+        </div>
+    </div>
+    <footer>
+        <p2>&copy; 2023 Mehek & Muskaan. All rights reserved.</p2>
+        </footer>
+</body>
+
+</html>
